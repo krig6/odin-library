@@ -111,7 +111,7 @@ input:focus {
   border-color: var(--text-color);
 }
 
-.form-input-group labe {
+.form-input-group label {
   position: absolute;
   color: var(--text-color);
   font-size: 1rem;
@@ -125,4 +125,39 @@ input:focus {
   justify-content: space-evenly;
   color: var(--text-color);
   font-size: 1rem;
+}
+
+.form-checkbox-group label {
+  font-weight: 700;
+}
+
+input[type="checkbox"] {
+  display: grid;
+  align-items: center;
+  height: 1.2rem;
+  width: 1.2rem;
+  appearance: none;
+  background-color: #fff;
+  color: var(--text-color);
+  font: inherit;
+  transition: var(--transition-fast);
+  transform: translate(-0.075rem);
+  margin: 0;
+  border: 0.15rem solid var(--text-color);
+  border-radius: 0.15rem;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  height: 0.65rem;
+  width: 0.65rem;
+  transform: scale(0);
+  transition: var(--transition-fast) ease-in-out;
+  box-shadow: inset 5rem 5rem var(--text-color);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(2);
 }
