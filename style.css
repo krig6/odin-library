@@ -28,3 +28,46 @@
   --transition-normal: all 0.5s;
   --transition-slow: all 1s;
 }
+
+html {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.library-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.library-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 100vw;
+  background-color: var(--bg-color);
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--text-color);
+  box-shadow: 0 1px 5px var(--text-color);
+}
+
+.add-book-btn {
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-book-btn i {
+  font-weight: 900;
+}
+
+.library-title {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+}
