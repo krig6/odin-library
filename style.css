@@ -39,7 +39,6 @@ html {
 .library-container {
   display: grid;
   grid-template-rows: auto 1fr;
-  position: relative;
 }
 
 .library-header {
@@ -74,7 +73,7 @@ html {
 }
 
 .modal-container {
-  position: absolute;
+  position: fixed;
   top: 20%;
   justify-self: center;
   background-color: var(--bg-color);
