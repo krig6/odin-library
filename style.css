@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+:root {
+  /* Colors */
+  --primary-color: #fbf6ef;
+  --secondary-color: #dce0d9;
+  --text-color: #6f4e37;
+  --bg-color: #ead7c3;
+  --accent-color: #d4a373;
+
+  --read-color: rgb(161, 236, 161);
+  --not-read-color: rgb(230, 97, 88);
+  --read-color-rgb: 161, 236, 161;
+  --not-read-color-rgb: 230, 97, 88;
+
+  /* Transition speed */
+  --transition-fast: all 0.1s;
+  --transition-normal: all 0.5s;
+  --transition-slow: all 1s;
+}
