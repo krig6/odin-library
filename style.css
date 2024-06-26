@@ -214,3 +214,14 @@ input[type="checkbox"]:checked::before {
   z-index: 1000;
   display: none;
 }
+
+.book-list {
+  display: grid;
+  grid-template-columns: repaet(auto-fill, minmax(250px, 1fr));
+  justify-self: center;
+  position: relative;
+  width: 100%;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-inline: 10rem;
+}
