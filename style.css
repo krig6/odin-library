@@ -168,3 +168,37 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked::before {
   transform: scale(2);
 }
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.form-buttons button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: var(--transition-fast);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.confirm-btn {
+  background-color: var(--read-color);
+  transform: var(--transition-fast);
+}
+
+.cancel-btn {
+  background-color: var(--not-read-color);
+  transform: var(--transition-fast);
+}
+
+.confirm-btn:hover {
+  transform: scale(1.05);
+}
+
+.cancel-btn:hover {
+  transform: scale(1.05);
+}
