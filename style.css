@@ -39,6 +39,7 @@ html {
 .library-container {
   display: grid;
   grid-template-rows: auto 1fr;
+  position: relative;
 }
 
 .library-header {
@@ -70,6 +71,17 @@ html {
   font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: 0.5rem;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  justify-self: center;
+  background-color: var(--bg-color);
+  transition: all var(--transition-normal) ease-in-out;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  pointer-events: none;
 }
 
 form {
