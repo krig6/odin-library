@@ -75,13 +75,19 @@ html {
 
 .modal-container {
   position: absolute;
-  top: 50%;
+  top: 20%;
   justify-self: center;
   background-color: var(--bg-color);
-  transition: all var(--transition-normal) ease-in-out;
+  transform: scale(0);
+  transition: var(--transition-normal);
   padding: 2rem;
   border-radius: 0.5rem;
   pointer-events: none;
+}
+
+.show-modal {
+  pointer-events: all;
+  transform: scale(1.1);
 }
 
 form {
