@@ -64,6 +64,13 @@ class Library {
         this.clearInputFields();
     }
 
+    removeBookOnClick(removeButton, bookToRemove) {
+        removeButton.addEventListener('click', () => {
+            this.book = this.book.filter(book => book.title !== bookToRemove.title);
+            this.refreshBookDisplay();
+        })
+    }
+
     refreshBookDisplay() {
         while (bookListContainer.firstChild) {
             bookListContainer.removeChild(bookListContainer.firstChild);
@@ -95,8 +102,10 @@ class Library {
             </article>`
             bookListContainer.appendChild(bookCardElement);
 
+            const removeButton = bookCardElement.querySelector('.remove-btn');
             const readStatusButton = bookCardElement.querySelector('.status-btn');
             this.toggleReadStatusOnClick(readStatusButton, book);
+            this.removeBookOnClick(removeButton, book);
         })
     }
 
