@@ -298,3 +298,11 @@ input[type="checkbox"]:checked::before {
   color: var(--text-color);
   font-size: 1.2rem;
 }
+
+.read {
+  background-color: var(--read-color);
+}
+
+.not-read {
+  background-color: var(--not-read-color);
+}
