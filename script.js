@@ -95,6 +95,17 @@ class Library {
             </article>`
             bookListContainer.appendChild(bookCardElement);
 
+            const readStatusButton = bookCardElement.querySelector('.status-btn');
+            this.toggleReadStatusOnClick(readStatusButton, book);
+        })
+    }
+
+    toggleReadStatusOnClick(readStatusButton, book) {
+        readStatusButton.addEventListener('click', () => {
+            book.status = !book.status;
+            readStatusButton.classList.toggle('read')
+            readStatusButton.classList.toggle('not-read');
+            readStatusButton.textContent = book.status ? 'Read' : 'Not Read';
         })
     }
 
