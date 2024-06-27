@@ -27,7 +27,7 @@ class Library {
     }
 }
 
-const Library = new Library();
+const library = new Library();
 
 class Book {
     constructor(title, author, pages, status) {
