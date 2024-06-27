@@ -22,6 +22,8 @@ const readStatusCheckbox = document.querySelector('[data-book-status]');
 
 const confirmButton = document.querySelector('[data-confirm-btn]');
 
+const bookListContainer = document.querySelector('[data-book-list]');
+
 class Library {
     constructor() {
         this.book = [
