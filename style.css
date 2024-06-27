@@ -266,7 +266,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .remove-btn {
-  background-color: var(--not-read-color);
+  background-color: var(--secondary-color);
   transition: var(--transition-fast);
 }
 
