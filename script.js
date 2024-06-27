@@ -27,7 +27,7 @@ const bookListContainer = document.querySelector('[data-book-list]');
 
 class Library {
     constructor() {
-        this.book = [
+        this.book = this.retrieveBooks() || [
             { title: "The Great Gatsby", author: 'F. Scott Fitzgerald', pages: 192, status: false },
             { title: "The Lord of the Rings", author: 'J. R. R. Tolkien', pages: 1077, status: true },
             { title: "Harry Potter and the Prisoner of Azkaban", author: 'J. K. Rowling', pages: 317, status: true },
@@ -62,6 +62,7 @@ class Library {
         }
 
         this.book.unshift(book);
+        this.storeBooks();
         this.clearInputFields();
     }
 
@@ -69,6 +70,7 @@ class Library {
         removeButton.addEventListener('click', () => {
             this.book = this.book.filter(book => book.title !== bookToRemove.title);
             this.refreshBookDisplay();
+            this.storeBooks();
         })
     }
 
@@ -116,6 +118,7 @@ class Library {
             readStatusButton.classList.toggle('read')
             readStatusButton.classList.toggle('not-read');
             readStatusButton.textContent = book.status ? 'Read' : 'Not Read';
+            this.storeBooks();
         })
     }
 
@@ -124,6 +127,14 @@ class Library {
         authorInputField.value = ''
         pagesInputField.value = ''
         readStatusCheckbox.checked = false;
+    }
+
+    storeBooks() {
+        localStorage.setItem('bookList', JSON.stringify(this.book));
+    }
+
+    retrieveBooks() {
+        return JSON.parse(localStorage.getItem('bookList'));
     }
 }
 
