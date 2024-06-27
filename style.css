@@ -67,9 +67,9 @@ html {
 .library-title {
   display: flex;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 900;
-  letter-spacing: 0.5rem;
+  letter-spacing: -0.6rem;
 }
 
 .modal-container {
@@ -309,4 +309,18 @@ input[type="checkbox"]:checked::before {
 
 .not-read {
   background-color: var(--not-read-color);
+}
+
+.library-title .letter {
+  color: var(--text-color);
+}
+
+.library-title .i,
+.library-title .a {
+  color: var(--not-read-color);
+}
+
+.library-title .b,
+.library-title .rr {
+  color: var(--accent-color);
 }
