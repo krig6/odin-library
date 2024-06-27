@@ -183,10 +183,10 @@ cancelButton.addEventListener('click', (event) => {
 })
 
 titleInputField.addEventListener('input', () => {
-    library.validateInputs(titleInputField);
+    library.formatAndCapitalizeText(titleInputField);
 });
 
 authorInputField.addEventListener('input', () => {
-    library.validateInputs(authorInputField);
+    library.formatAndCapitalizeText(authorInputField);
 });
 
