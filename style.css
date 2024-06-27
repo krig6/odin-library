@@ -288,10 +288,14 @@ input[type="checkbox"]:checked::before {
   max-width: 100%;
 }
 
-.card-text .author {
+.card-text p {
   color: var(--text-color);
   font-size: 1.3rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .card-span {
