@@ -33,6 +33,7 @@ class Library {
             { title: "The Book Thief", author: 'Markus Zusak', pages: 584, status: false },
             { title: "Moby-Dick", author: 'Herman Melville', pages: 635, status: false },
         ]
+        this.refreshBookDisplay();
     }
 
     isTitleNotBlank(title) {
@@ -74,7 +75,7 @@ class Library {
 
             if (book.author && book.author.trim() !== '') {
                 bookCardContent += `<h3>${book.title}</h3>`;
-                bookCardContent += `<p><span class="card-span">by</span><span class="author">${book.author}</span></p>`;
+                bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
             } else {
                 bookCardContent += `<h3>${book.title}</h3>`;
             }
