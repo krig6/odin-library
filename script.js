@@ -61,6 +61,40 @@ class Library {
         this.clearInputFields();
     }
 
+    refreshBookDisplay() {
+        while (bookListContainer.firstChild) {
+            bookListContainer.removeChild(bookListContainer.firstChild);
+        }
+
+        this.book.forEach(book => {
+            let bookCardElement = document.createElement('article');
+            let bookCardContent = '';
+
+            if (book.author && book.author.trim() !== '') {
+                bookCardContent += `<h3>${book.title}</h3>`;
+                bookCardContent += `<p><span class="card-span">by</span><span class="author">${book.author}</span></p>`;
+            } else {
+                bookCardContent += `<h3>${book.title}</h3>`;
+            }
+
+            if (typeof book.pages === 'number' && !isNaN(book.pages)) {
+                bookCardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
+            }
+
+            bookCardElement.innerHTML = `<article class="card">
+                <div class="card-text">
+                   ${bookCardContent}
+                </div>
+                <div class="card-buttons">
+                    <button class="status-btn ${book.status ? 'read' : 'not-read'}">${book.status ? 'Read' : 'Not Read'}</button>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </article>`
+            bookListContainer.appendChild(bookCardElement);
+
+        })
+    }
+
     clearInputFields() {
         titleInputField.value = ''
         authorInputField.value = ''
@@ -85,4 +119,5 @@ confirmButton.addEventListener('click', (event) => {
 
     let newBook = new Book(titleInputField.value, authorInputField.value, pagesInputField.value, readStatusCheckbox.checked);
     library.addBookIfUnique(newBook);
+    library.refreshBookDisplay();
 })
