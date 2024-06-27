@@ -136,6 +136,16 @@ class Library {
     retrieveBooks() {
         return JSON.parse(localStorage.getItem('bookList'));
     }
+
+    formatAndCapitalizeText(input) {
+        const formattedInput = input.value
+            .replace(/\s+/g, ' ') // Replace consecutive spaces with a single space
+            .toLowerCase() // Convert all letters to lowercase
+            .replace(/(^|\s)\S/g, function (firstLetter) {
+                return firstLetter.toUpperCase(); // Capitalize first letter of each word
+            });
+        input.value = formattedInput;
+    }
 }
 
 const library = new Library();
@@ -171,3 +181,12 @@ cancelButton.addEventListener('click', (event) => {
         document.body.style.overflow = 'auto';
     }
 })
+
+titleInputField.addEventListener('input', () => {
+    library.validateInputs(titleInputField);
+});
+
+authorInputField.addEventListener('input', () => {
+    library.validateInputs(authorInputField);
+});
+
