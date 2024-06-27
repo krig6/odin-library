@@ -173,7 +173,7 @@ cancelButton.addEventListener('click', (event) => {
     modalContainer.classList.remove('show-modal');
     modalOverlay.classList.remove('show-overlay');
 
-    if (modalContainer.classList.contains('show-mdoal')) {
+    if (modalContainer.classList.contains('show-modal')) {
         modalOverlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
     } else {
