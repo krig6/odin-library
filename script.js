@@ -21,6 +21,7 @@ const pagesInputField = document.querySelector('[data-pages-input]');
 const readStatusCheckbox = document.querySelector('[data-book-status]');
 
 const confirmButton = document.querySelector('[data-confirm-btn]');
+const cancelButton = document.querySelector('[data-cancel-btn]');
 
 const bookListContainer = document.querySelector('[data-book-list]');
 
@@ -143,4 +144,19 @@ confirmButton.addEventListener('click', (event) => {
     let newBook = new Book(titleInputField.value, authorInputField.value, pagesInputField.value, readStatusCheckbox.checked);
     library.addBookIfUnique(newBook);
     library.refreshBookDisplay();
+})
+
+cancelButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    modalContainer.classList.remove('show-modal');
+    modalOverlay.classList.remove('show-overlay');
+
+    if (modalContainer.classList.contains('show-mdoal')) {
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    } else {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 })
