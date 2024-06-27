@@ -33,7 +33,30 @@ class Library {
         ]
     }
 
+    isTitleNotBlank(title) {
+        if (title === null || title.trim() === '') {
+            return false;
+        }
+        return true;
+    }
+
+    isBookAlreadyExists(title) {
+        return this.book.some(book => book.title === title);
+    }
+
     addBookIfUnique(book) {
+
+        if (!this.isTitleNotBlank(book.title)) {
+            alert('Title is required.');
+            return;
+        }
+
+        if (this.isBookAlreadyExists(book.title)) {
+            alert('Book is already in the list.');
+            this.clearInputFields();
+            return;
+        }
+
         this.book.unshift(book);
         this.clearInputFields();
     }
