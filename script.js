@@ -15,6 +15,11 @@ addBookButton.addEventListener('click', () => {
     }
 })
 
+const titleInputField = document.querySelector('[data-title-input]');
+const authorInputField = document.querySelector('[data-author-input]');
+const pagesInputField = document.querySelector('[data-pages-input]');
+const readStatusCheckbox = document.querySelector('[data-book-status]');
+
 class Library {
     constructor() {
         this.book = [
