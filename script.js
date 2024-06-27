@@ -20,6 +20,8 @@ const authorInputField = document.querySelector('[data-author-input]');
 const pagesInputField = document.querySelector('[data-pages-input]');
 const readStatusCheckbox = document.querySelector('[data-book-status]');
 
+const confirmButton = document.querySelector('[data-confirm-btn]');
+
 class Library {
     constructor() {
         this.book = [
@@ -42,3 +44,10 @@ class Book {
         this.status = status;
     }
 }
+
+confirmButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    let newBook = new Book(titleInputField.value, authorInputField.value, pagesInputField.value, readStatusCheckbox.checked);
+    library.addBookIfUnique(newBook);
+})
