@@ -90,7 +90,7 @@ class Library {
                 bookCardContent += `<h3>${book.title}</h3>`;
             }
 
-            if (typeof book.pages === 'number' && !isNaN(book.pages)) {
+            if (book.pages) {
                 bookCardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
             }
 
@@ -162,7 +162,7 @@ class Book {
 confirmButton.addEventListener('click', (event) => {
     event.preventDefault();
 
-    let newBook = new Book(titleInputField.value, authorInputField.value, pagesInputField.value, readStatusCheckbox.checked);
+    let newBook = new Book(titleInputField.value, authorInputField.value, parseInt(pagesInputField.value), readStatusCheckbox.checked);
     library.addBookIfUnique(newBook);
     library.refreshBookDisplay();
 })
