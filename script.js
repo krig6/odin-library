@@ -32,6 +32,18 @@ class Library {
             { title: "Moby-Dick", author: 'Herman Melville', pages: 635, status: false },
         ]
     }
+
+    addBookIfUnique(book) {
+        this.book.unshift(book);
+        this.clearInputFields();
+    }
+
+    clearInputFields() {
+        titleInputField.value = ''
+        authorInputField.value = ''
+        pagesInputField.value = ''
+        readStatusCheckbox.checked = false;
+    }
 }
 
 const library = new Library();
