@@ -169,7 +169,8 @@ input[type="checkbox"]:checked::before {
   transform: scale(2);
 }
 
-.form-buttons {
+.form-buttons,
+.card-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -216,11 +217,84 @@ input[type="checkbox"]:checked::before {
 
 .book-list {
   display: grid;
-  grid-template-columns: repaet(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   justify-self: center;
   position: relative;
   width: 100%;
   gap: 2rem;
   padding-top: 2rem;
   padding-inline: 10rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 200px;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.card:hover {
+  outline: solid var(--text-color);
+}
+
+.card-buttons {
+  position: absolute;
+  align-self: center;
+  top: 55%;
+  margin-top: 2rem;
+}
+
+.card button {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  width: 96px;
+}
+
+.status-btn {
+  background-color: var(--read-color);
+  transition: var(--transition-fast);
+}
+
+.remove-btn {
+  background-color: var(--not-read-color);
+  transition: var(--transition-fast);
+}
+
+.status-btn:hover {
+  transform: scale(1.05);
+}
+
+.remove-btn:hover {
+  transform: scale(1.05);
+}
+
+.card-text h3 {
+  color: var(--text-color);
+  font-size: 1.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.card-text .author {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.card-span {
+  color: var(--text-color);
+  font-size: 1.2rem;
 }
