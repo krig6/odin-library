@@ -13,11 +13,11 @@
 
 :root {
   /* Colors */
-  --primary-color: #fbf6ef;
-  --secondary-color: #dce0d9;
+  --card-background-color: #fbf6ef;
+  --app-background-color: #f5ba6e;
+  --accent-light: #dce0d9;
+  --accent-dark: #d4a373;
   --text-color: #6f4e37;
-  --bg-color: #f5ba6e;
-  --accent-color: #d4a373;
 
   --read-color: rgb(161, 236, 161);
   --not-read-color: rgb(230, 97, 88);
@@ -31,7 +31,7 @@
 }
 
 html {
-  background-color: var(--bg-color);
+  background-color: var(--app-background-color);
   color: var(--text-color);
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -47,7 +47,7 @@ html {
   align-items: center;
   justify-content: space-evenly;
   min-width: 100vw;
-  background-color: var(--bg-color);
+  background-color: var(--app-background-color);
   padding-block: 1.5rem;
   border-bottom: 1px solid var(--text-color);
   box-shadow: 0 1px 5px var(--text-color);
@@ -77,7 +77,7 @@ html {
   position: fixed;
   top: 20%;
   justify-self: center;
-  background-color: var(--bg-color);
+  background-color: var(--app-background-color);
   transform: scale(0);
   transition: var(--transition-normal);
   padding: 2rem;
@@ -110,7 +110,7 @@ form h1 {
   color: var(--text-color);
   font-size: 1.2rem;
   font-weight: 600;
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--accent-light);
   border-radius: 6px;
   padding: 20px 5px 0px 5px;
 }
@@ -233,7 +233,7 @@ input[type="checkbox"]:checked::before {
   position: relative;
   min-height: 300px;
   text-align: center;
-  background-color: var(--primary-color);
+  background-color: var(--card-background-color);
   border-radius: 0.5rem;
   padding: 1rem;
 }
@@ -266,7 +266,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .remove-btn {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-light);
   transition: var(--transition-fast);
 }
 
@@ -329,5 +329,5 @@ h3.long-title {
 
 .library-title .b,
 .library-title .rr {
-  color: var(--accent-color);
+  color: var(--accent-dark);
 }
