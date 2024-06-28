@@ -236,6 +236,7 @@ input[type="checkbox"]:checked::before {
   background-color: var(--card-background-color);
   border-radius: 0.5rem;
   padding: 1rem;
+  box-shadow: 2px 4px 16px var(--text-color);
 }
 
 .card:hover {
