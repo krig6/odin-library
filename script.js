@@ -92,10 +92,10 @@ class Library {
             let bookCardContent = '';
             const titleClass = book.title.length >= 10 ? 'long-title' : '';
             if (book.author && book.author.trim() !== '') {
-                bookCardContent += `<h3 class="${titleClass}">${truncateString(book.title, 50)}</h3>`;
+                bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
                 bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
             } else {
-                bookCardContent += `<h3 class="${titleClass}">${truncateString(book.title, 50)}</h3>`;
+                bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
             }
 
             if (book.pages) {
