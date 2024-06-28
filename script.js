@@ -25,6 +25,14 @@ const cancelButton = document.querySelector('[data-cancel-btn]');
 
 const bookListContainer = document.querySelector('[data-book-list]');
 
+function truncateString(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    } else {
+        return text;
+    }
+}
+
 class Library {
     constructor() {
         this.book = this.retrieveBooks() || [
@@ -82,12 +90,12 @@ class Library {
         this.book.forEach(book => {
             let bookCardElement = document.createElement('article');
             let bookCardContent = '';
-
+            const titleClass = book.title.length >= 10 ? 'long-title' : '';
             if (book.author && book.author.trim() !== '') {
-                bookCardContent += `<h3>${book.title}</h3>`;
+                bookCardContent += `<h3 class="${titleClass}">${truncateString(book.title, 50)}</h3>`;
                 bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
             } else {
-                bookCardContent += `<h3>${book.title}</h3>`;
+                bookCardContent += `<h3 class="${titleClass}">${truncateString(book.title, 50)}</h3>`;
             }
 
             if (book.pages) {
