@@ -280,13 +280,14 @@ input[type="checkbox"]:checked::before {
 
 .card-text h3 {
   color: var(--text-color);
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   max-width: 100%;
 }
 
 h3.long-title {
   font-size: 1.5rem;
+  word-wrap: break-word;
 }
 
 .card-text p {
