@@ -180,6 +180,7 @@ cancelButton.addEventListener('click', (event) => {
 
     modalContainer.classList.remove('show-modal');
     modalOverlay.classList.remove('show-overlay');
+    library.clearInputFields();
 
     if (modalContainer.classList.contains('show-modal')) {
         modalOverlay.style.display = 'block';
