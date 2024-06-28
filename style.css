@@ -231,10 +231,9 @@ input[type="checkbox"]:checked::before {
   display: flex;
   flex-direction: column;
   position: relative;
-  min-height: 200px;
+  min-height: 300px;
   text-align: center;
   background-color: var(--primary-color);
-  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1rem;
 }
@@ -246,7 +245,7 @@ input[type="checkbox"]:checked::before {
 .card-buttons {
   position: absolute;
   align-self: center;
-  top: 55%;
+  top: 70%;
   margin-top: 2rem;
 }
 
@@ -281,8 +280,8 @@ input[type="checkbox"]:checked::before {
 
 .card-text h3 {
   color: var(--text-color);
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -291,12 +290,18 @@ input[type="checkbox"]:checked::before {
 
 .card-text p {
   color: var(--text-color);
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .card-span {
