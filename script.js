@@ -1,20 +1,9 @@
-// Toggle modal visibility when add book button is clicked
+// DOM elements
 const modalContainer = document.querySelector('[data-modal-container]');
 const addBookButton = document.querySelector('[data-add-book]');
 const modalOverlay = document.querySelector('[data-overlay]');
 
-addBookButton.addEventListener('click', () => {
-    modalContainer.classList.toggle('show-modal');
-
-    if (modalContainer.classList.contains('show-modal')) {
-        modalOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    } else {
-        modalOverlay.style.display = 'none';
-        document.body.style.overflow = 'hidden';
-    }
-})
-
+const bookListContainer = document.querySelector('[data-book-list]');
 const titleInputField = document.querySelector('[data-title-input]');
 const authorInputField = document.querySelector('[data-author-input]');
 const pagesInputField = document.querySelector('[data-pages-input]');
@@ -23,8 +12,7 @@ const readStatusCheckbox = document.querySelector('[data-book-status]');
 const confirmButton = document.querySelector('[data-confirm-btn]');
 const cancelButton = document.querySelector('[data-cancel-btn]');
 
-const bookListContainer = document.querySelector('[data-book-list]');
-
+// Snackbar function for displaying messages
 function showSnackbar(message, type = 'success') {
     const snackbar = document.getElementById('snackbar');
     snackbar.textContent = message;
@@ -33,7 +21,7 @@ function showSnackbar(message, type = 'success') {
     setTimeout(function () { snackbar.classList.remove('show'); }, 3000);
 }
 
-
+// Utility function to truncate long titles
 function truncateString(text, maxLength) {
     if (text.length > maxLength) {
         return text.substring(0, maxLength) + '...';
@@ -42,10 +30,28 @@ function truncateString(text, maxLength) {
     }
 }
 
+
+// Book class definition
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+}
+
+// Library class for managing books
 class Library {
     constructor() {
         this.book = this.retrieveBooks() || [];
         this.refreshBookDisplay();
+    }
+
+    displayEmptyLibraryMessage(container) {
+        container.innerHTML = `<p class="empty-library-message">
+                    Your library is currently empty. Start adding books!
+                </p>`;
     }
 
     isTitleNotBlank(title) {
@@ -85,12 +91,6 @@ class Library {
             this.refreshBookDisplay();
             this.storeBooks();
         })
-    }
-
-    displayEmptyLibraryMessage(container) {
-        container.innerHTML = `<p class="empty-library-message">
-                    Your library is currently empty. Start adding books!
-                </p>`;
     }
 
     refreshBookDisplay() {
@@ -144,6 +144,16 @@ class Library {
         })
     }
 
+    formatAndCapitalizeText(input) {
+        const formattedInput = input.value
+            .replace(/\s+/g, ' ') // Replace consecutive spaces with a single space
+            .toLowerCase() // Convert all letters to lowercase
+            .replace(/(^|\s)\S/g, function (firstLetter) {
+                return firstLetter.toUpperCase(); // Capitalize first letter of each word
+            });
+        input.value = formattedInput;
+    }
+
     clearInputFields() {
         titleInputField.value = ''
         authorInputField.value = ''
@@ -158,28 +168,24 @@ class Library {
     retrieveBooks() {
         return JSON.parse(localStorage.getItem('bookList'));
     }
-
-    formatAndCapitalizeText(input) {
-        const formattedInput = input.value
-            .replace(/\s+/g, ' ') // Replace consecutive spaces with a single space
-            .toLowerCase() // Convert all letters to lowercase
-            .replace(/(^|\s)\S/g, function (firstLetter) {
-                return firstLetter.toUpperCase(); // Capitalize first letter of each word
-            });
-        input.value = formattedInput;
-    }
 }
 
+// Initialize library object
 const library = new Library();
 
-class Book {
-    constructor(title, author, pages, status) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.status = status;
+// Event listeners
+
+addBookButton.addEventListener('click', () => {
+    modalContainer.classList.toggle('show-modal');
+
+    if (modalContainer.classList.contains('show-modal')) {
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    } else {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'hidden';
     }
-}
+})
 
 confirmButton.addEventListener('click', (event) => {
     event.preventDefault();
