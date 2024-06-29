@@ -82,6 +82,12 @@ class Library {
         })
     }
 
+    displayEmptyLibraryMessage(container) {
+        container.innerHTML = `<p class="empty-library-message">
+                    Your library is currently empty. Start adding books!
+                </p>`;
+    }
+
     refreshBookDisplay() {
         while (bookListContainer.firstChild) {
             bookListContainer.removeChild(bookListContainer.firstChild);
