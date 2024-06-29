@@ -21,8 +21,6 @@
 
   --read-color: rgb(161, 236, 161);
   --not-read-color: rgb(230, 97, 88);
-  --read-color-rgb: 161, 236, 161;
-  --not-read-color-rgb: 230, 97, 88;
 
   /* Transition speed */
   --transition-fast: all 0.1s;
