@@ -89,41 +89,44 @@ class Library {
     }
 
     refreshBookDisplay() {
-        while (bookListContainer.firstChild) {
-            bookListContainer.removeChild(bookListContainer.firstChild);
+        if (this.book.length === 0) {
+            this.displayEmptyLibraryMessage(bookListContainer);
+        } else {
+            bookListContainer.innerHTML = ''
+            this.book.forEach((book) => {
+                let bookCardElement = document.createElement("article");
+                let bookCardContent = "";
+                const titleClass = book.title.length >= 10 ? "long-title" : "";
+                if (book.author && book.author.trim() !== "") {
+                    bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
+                    bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
+                } else {
+                    bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
+                }
+
+                if (book.pages) {
+                    bookCardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
+                }
+
+                bookCardElement.innerHTML = `<article class="card">
+                    <div class="card-text">
+                       ${bookCardContent}
+                    </div>
+                    <div class="card-buttons">
+                        <button class="status-btn ${book.status ? "read" : "not-read"
+                    }">${book.status ? "Read" : "Not Read"}</button>
+                        <button class="remove-btn">Remove</button>
+                    </div>
+                </article>`;
+                bookListContainer.appendChild(bookCardElement);
+
+                const removeButton = bookCardElement.querySelector(".remove-btn");
+                const readStatusButton = bookCardElement.querySelector(".status-btn");
+
+                this.toggleReadStatusOnClick(readStatusButton, book);
+                this.removeBookOnClick(removeButton, book);
+            });
         }
-
-        this.book.forEach(book => {
-            let bookCardElement = document.createElement('article');
-            let bookCardContent = '';
-            const titleClass = book.title.length >= 10 ? 'long-title' : '';
-            if (book.author && book.author.trim() !== '') {
-                bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
-                bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
-            } else {
-                bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
-            }
-
-            if (book.pages) {
-                bookCardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
-            }
-
-            bookCardElement.innerHTML = `<article class="card">
-                <div class="card-text">
-                   ${bookCardContent}
-                </div>
-                <div class="card-buttons">
-                    <button class="status-btn ${book.status ? 'read' : 'not-read'}">${book.status ? 'Read' : 'Not Read'}</button>
-                    <button class="remove-btn">Remove</button>
-                </div>
-            </article>`
-            bookListContainer.appendChild(bookCardElement);
-
-            const removeButton = bookCardElement.querySelector('.remove-btn');
-            const readStatusButton = bookCardElement.querySelector('.status-btn');
-            this.toggleReadStatusOnClick(readStatusButton, book);
-            this.removeBookOnClick(removeButton, book);
-        })
     }
 
     toggleReadStatusOnClick(readStatusButton, book) {
