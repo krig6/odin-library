@@ -25,6 +25,15 @@ const cancelButton = document.querySelector('[data-cancel-btn]');
 
 const bookListContainer = document.querySelector('[data-book-list]');
 
+function showSnackbar(message, type = 'success') {
+    const snackbar = document.getElementById('snackbar');
+    snackbar.textContent = message;
+    snackbar.className = ''; // Clear existing classes
+    snackbar.classList.add('show', type);
+    setTimeout(function () { snackbar.classList.remove('show'); }, 3000);
+}
+
+
 function truncateString(text, maxLength) {
     if (text.length > maxLength) {
         return text.substring(0, maxLength) + '...';
@@ -53,18 +62,19 @@ class Library {
     addBookIfUnique(book) {
 
         if (!this.isTitleNotBlank(book.title)) {
-            alert('Title is required.');
+            showSnackbar('Please enter a book title!', 'warning')
             return;
         }
 
         if (this.isBookAlreadyExists(book.title)) {
-            alert('Book is already in the list.');
+            showSnackbar('Book already saved!', 'warning')
             this.clearInputFields();
             return;
         }
 
         this.book.unshift(book);
         this.storeBooks();
+        showSnackbar('Book succesfully added!', 'success')
         this.clearInputFields();
     }
 
@@ -90,7 +100,7 @@ class Library {
             this.book.forEach((book) => {
                 let bookCardElement = document.createElement("article");
                 let bookCardContent = "";
-                const titleClass = book.title.length >= 10 ? "long-title" : "";
+                const titleClass = book.title.length >= 7 ? "long-title" : "";
                 if (book.author && book.author.trim() !== "") {
                     bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
                     bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
