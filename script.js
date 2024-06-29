@@ -81,6 +81,7 @@ class Library {
     removeBookOnClick(removeButton, bookToRemove) {
         removeButton.addEventListener('click', () => {
             this.book = this.book.filter(book => book.title !== bookToRemove.title);
+            showSnackbar(`${bookToRemove.title} has been deleted.`, 'warning')
             this.refreshBookDisplay();
             this.storeBooks();
         })

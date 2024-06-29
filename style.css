@@ -366,7 +366,7 @@ h3.long-title {
 }
 
 #snackbar.warning {
-  background-color: var(--not-read-color);
+  background-color: var(--accent-light);
 }
 
 @keyframes fadein {
