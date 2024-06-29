@@ -333,3 +333,12 @@ h3.long-title {
 .library-title .rr {
   color: var(--accent-dark);
 }
+
+.empty-library-message {
+  font-size: 4rem;
+  justify-self: center;
+  position: absolute;
+  margin-top: 10rem;
+  max-width: 20ch;
+  text-align: center;
+}
