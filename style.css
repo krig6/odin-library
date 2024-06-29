@@ -15,12 +15,12 @@
   /* Colors */
   --card-background-color: #fbf6ef;
   --app-background-color: #f5ba6e;
-  --accent-light: #dce0d9;
+  --accent-light: #d36158;
   --accent-dark: #d4a373;
   --text-color: #6f4e37;
 
-  --read-color: rgb(161, 236, 161);
-  --not-read-color: rgb(230, 97, 88);
+  --read-color: #a1eca1;
+  --not-read-color: #d3d3d3;
 
   /* Transition speed */
   --transition-fast: all 0.1s;
@@ -108,7 +108,7 @@ form h1 {
   color: var(--text-color);
   font-size: 1.2rem;
   font-weight: 600;
-  border: 2px solid var(--accent-light);
+  border: 2px solid var(--not-read-color);
   border-radius: 6px;
   padding: 20px 5px 0px 5px;
 }
@@ -324,7 +324,7 @@ h3.long-title {
 
 .library-title .i,
 .library-title .a {
-  color: var(--not-read-color);
+  color: var(--accent-light);
 }
 
 .library-title .b,
