@@ -105,6 +105,33 @@ class Library {
         })
     }
 
+    renderBookCard(book) {
+        let card = ''
+        let cardContent = "";
+        const titleClass = book.title.length >= 7 ? "long-title" : "";
+
+        if (book.author && book.author.trim() !== "") {
+            cardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
+            cardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
+        } else {
+            cardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
+        }
+
+        if (book.pages) {
+            cardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
+        }
+
+        card += `<div class="card-text">
+                       ${cardContent}
+                    </div>
+                    <div class="card-buttons">
+                        <button class="status-btn ${book.status ? "read" : "not-read"}">${book.status ? "Read" : "Not Read"}</button>
+                        <button class="remove-btn">Remove</button>
+                    </div>`;
+
+        return card;
+    }
+
     refreshBookDisplay() {
         if (this.book.length === 0) {
             this.displayEmptyLibraryMessage(bookListContainer);
@@ -112,29 +139,8 @@ class Library {
             bookListContainer.innerHTML = ''
             this.book.forEach((book) => {
                 let bookCardElement = document.createElement("article");
-                let bookCardContent = "";
-                const titleClass = book.title.length >= 7 ? "long-title" : "";
-                if (book.author && book.author.trim() !== "") {
-                    bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
-                    bookCardContent += `<p><span class="card-span">by </span><span class="author">${book.author}</span></p>`;
-                } else {
-                    bookCardContent += `<h3 class="${titleClass}"><i>"${truncateString(book.title, 50)}"</i></h3>`;
-                }
-
-                if (book.pages) {
-                    bookCardContent += `<p><span class="card-span">Pages:</span> <span class="card-span">${book.pages}</span></p>`;
-                }
-
-                bookCardElement.innerHTML = `<article class="card">
-                    <div class="card-text">
-                       ${bookCardContent}
-                    </div>
-                    <div class="card-buttons">
-                        <button class="status-btn ${book.status ? "read" : "not-read"
-                    }">${book.status ? "Read" : "Not Read"}</button>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-                </article>`;
+                bookCardElement.classList.add('card');
+                bookCardElement.innerHTML = this.renderBookCard(book);
                 bookListContainer.appendChild(bookCardElement);
 
                 const removeButton = bookCardElement.querySelector(".remove-btn");
