@@ -12,6 +12,18 @@ const readStatusCheckbox = document.querySelector('[data-book-status]');
 const confirmButton = document.querySelector('[data-confirm-btn]');
 const cancelButton = document.querySelector('[data-cancel-btn]');
 
+// Toggle function to show/hide modal
+function toggleModalContainer() {
+    modalContainer.classList.toggle('show-modal');
+    if (modalContainer.classList.contains('show-modal')) {
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    } else {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Snackbar function for displaying messages
 function showSnackbar(message, type = 'success') {
     const snackbar = document.getElementById('snackbar');
@@ -175,16 +187,12 @@ const library = new Library();
 
 // Event listeners
 
-addBookButton.addEventListener('click', () => {
-    modalContainer.classList.toggle('show-modal');
+addBookButton.addEventListener('click', toggleModalContainer)
 
-    if (modalContainer.classList.contains('show-modal')) {
-        modalOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    } else {
-        modalOverlay.style.display = 'none';
-        document.body.style.overflow = 'hidden';
-    }
+cancelButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    toggleModalContainer();
+    library.clearInputFields();
 })
 
 confirmButton.addEventListener('click', (event) => {
@@ -193,22 +201,6 @@ confirmButton.addEventListener('click', (event) => {
     let newBook = new Book(titleInputField.value, authorInputField.value, parseInt(pagesInputField.value), readStatusCheckbox.checked);
     library.addBookIfUnique(newBook);
     library.refreshBookDisplay();
-})
-
-cancelButton.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    modalContainer.classList.remove('show-modal');
-    modalOverlay.classList.remove('show-overlay');
-    library.clearInputFields();
-
-    if (modalContainer.classList.contains('show-modal')) {
-        modalOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    } else {
-        modalOverlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
 })
 
 titleInputField.addEventListener('input', () => {
